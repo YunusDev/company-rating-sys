@@ -1,6 +1,6 @@
 <template>
     <div class="col-md-6  col-lg-4">
-        <div class="card  d-block border hover-shadow-6 h-250 mb-6">
+        <div class="card  d-block border hover-shadow-6 mb-6 h-290" >
            <div class="row mb-0">
                <div class="col-md-12 star-right" >
                    <star-rating :read-only="true" :increment="0.5" :rating="parseFloat(company.avg_rating)" :star-size="14" :show-rating="false"></star-rating>
@@ -8,8 +8,9 @@
                </div>
            </div>
             <div class=" pl-3 text-center pr-3">
-                <p class="small-5 text-lighter text-uppercase ls-2 fw-400">{{ company.name }}</p>
-                <p>{{ company.phone }} | {{ company.email }}</p>
+                <p class="small-5 text-lighter text-uppercase ls-2 fw-300">{{ company.name }}</p>
+                <p class="medium m-0 text-dark">{{ company.phone }}</p>
+                <p class="medium m-0 text-dark">{{ company.email }}</p>
                 <a class="small ls-1" target="_blank" :href="company.website">{{ company.website }} <span class="pl-1">⟶</span></a>
                 <br>
                 <div class="star" v-if="!company.is_rated" >
@@ -76,5 +77,13 @@ export default {
 
     .display-none{
         display: none !important;
+    }
+
+    .h-290{
+        height: 290px !important;
+    }
+
+    .m-0{
+        margin: 0;
     }
 </style>

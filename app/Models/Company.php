@@ -4,13 +4,12 @@ namespace App\Models;
 
 use App\Traits\Rateable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-//use Illuminate\Database\Eloquent\Model;
 
 class Company extends Model
 {
     use HasFactory, Rateable;
 
-    public $appends = ['is_rated', 'average_rating'];
+    public $appends = ['is_rated'];
 
     protected $fillable = [
         'name',

@@ -2006,6 +2006,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "Company",
@@ -6584,7 +6585,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\ndiv.star[data-v-3ccc7cf8]{\n    margin-top: 10px;\n    width: 35%;\n    margin-left: 30%;\n}\ndiv.star-right[data-v-3ccc7cf8]{\n    /*margin-left: 65%;*/\n    margin: 10px 0 8px 65%;\n}\ndiv.star i[data-v-3ccc7cf8]{\n    margin-right: 5px;\n}\n.display-none[data-v-3ccc7cf8]{\n    display: none !important;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\ndiv.star[data-v-3ccc7cf8]{\n    margin-top: 10px;\n    width: 35%;\n    margin-left: 30%;\n}\ndiv.star-right[data-v-3ccc7cf8]{\n    /*margin-left: 65%;*/\n    margin: 10px 0 8px 65%;\n}\ndiv.star i[data-v-3ccc7cf8]{\n    margin-right: 5px;\n}\n.display-none[data-v-3ccc7cf8]{\n    display: none !important;\n}\n.h-290[data-v-3ccc7cf8]{\n    height: 290px !important;\n}\n.m-0[data-v-3ccc7cf8]{\n    margin: 0;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -38417,7 +38418,7 @@ var render = function() {
   return _c("div", { staticClass: "col-md-6  col-lg-4" }, [
     _c(
       "div",
-      { staticClass: "card  d-block border hover-shadow-6 h-250 mb-6" },
+      { staticClass: "card  d-block border hover-shadow-6 mb-6 h-290" },
       [
         _c("div", { staticClass: "row mb-0" }, [
           _c(
@@ -38445,14 +38446,16 @@ var render = function() {
         _c("div", { staticClass: " pl-3 text-center pr-3" }, [
           _c(
             "p",
-            { staticClass: "small-5 text-lighter text-uppercase ls-2 fw-400" },
+            { staticClass: "small-5 text-lighter text-uppercase ls-2 fw-300" },
             [_vm._v(_vm._s(_vm.company.name))]
           ),
           _vm._v(" "),
-          _c("p", [
-            _vm._v(
-              _vm._s(_vm.company.phone) + " | " + _vm._s(_vm.company.email)
-            )
+          _c("p", { staticClass: "medium m-0 text-dark" }, [
+            _vm._v(_vm._s(_vm.company.phone))
+          ]),
+          _vm._v(" "),
+          _c("p", { staticClass: "medium m-0 text-dark" }, [
+            _vm._v(_vm._s(_vm.company.email))
           ]),
           _vm._v(" "),
           _c(

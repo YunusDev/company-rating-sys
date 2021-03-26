@@ -22,10 +22,4 @@ trait Rateable{
 
     }
 
-    public function getAverageRatingAttribute()
-    {
-        return $this->averageRating();
-
-    }
-
 }

@@ -15,10 +15,11 @@ class CreateRatingsTable extends Migration
     {
         Schema::create('ratings', function (Blueprint $table) {
             $table->string('user_id');
-            $table->morphs('rate');
+            $table->string('rating_id');
+            $table->string('rating_type');
             $table->unsignedInteger('rating');
             $table->timestamps();
-            $table->unique(['user_id', 'rate_id', 'rate_type']);
+            $table->unique(['user_id', 'rating_id', 'rating_type']);
         });
     }
 

@@ -2,7 +2,7 @@
     <section class="section bg-gray">
         <div class="container-fluid">
             <div class="row col-md-10 gap-y mx-auto" style="">
-                <company v-for="company in companiesData.data" :key="company.id" :company="company"  ></company>
+                <company :is_auth="is_auth" v-for="company in companiesData.data" :key="company.id" :company="company"  ></company>
                 <br>
                 <br>
                 <nav class="flexbox mt-6 col-md-12">
@@ -25,6 +25,8 @@
 import Company from "./Company";
 export default {
     name: "Companies",
+
+    props: ['is_auth'],
 
     components: {Company},
 

@@ -16,10 +16,17 @@ class CompanyRepository extends BaseRepository implements CompanyContract
 
     }
 
-    public function getCompanies($numPagination = 9)
+    public function getCompanies(int $numPagination = 9)
     {
-        return $this->model->paginate($numPagination);
+        return $this->model->latest()->paginate($numPagination);
 
     }
+
+    public function rateCompany(Company $company, int $rating)
+    {
+        $company->ratings()->attach(auth()->id(), ['rating' => $rating]);
+        return $company->fresh();
+    }
+
 
 }

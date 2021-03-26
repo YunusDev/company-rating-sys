@@ -21,7 +21,7 @@
     <div class=" mb-50" >
         <main class="container-fluid">
             <br>
-            <user-companies></user-companies>
+            <user-companies is_auth="{{!auth()->guest()}}"></user-companies>
         </main>
     </div>
 @endsection

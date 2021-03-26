@@ -13,9 +13,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/companies', [App\Http\Controllers\HomeController::class, 'getCompanies']);
-
 Auth::routes();
+
+Route::get('/',
+    [App\Http\Controllers\HomeController::class, 'index']
+)->name('home');
+
+Route::get('/companies',
+    [App\Http\Controllers\CompanyController::class, 'getCompanies']
+);
+
+Route::get('/rate',
+    [App\Http\Controllers\CompanyController::class, 'rateCompany']
+);
+
+Route::post('/company/{company}/rate',
+    [App\Http\Controllers\CompanyController::class, 'rateCompany']
+);
 

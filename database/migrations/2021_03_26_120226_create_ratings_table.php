@@ -14,9 +14,11 @@ class CreateRatingsTable extends Migration
     public function up()
     {
         Schema::create('ratings', function (Blueprint $table) {
-            $table->uuid('id')->primary();
-
+            $table->string('user_id');
+            $table->morphs('rate');
+            $table->integer('rating');
             $table->timestamps();
+            $table->unique(['user_id', 'rate_id', 'rate_type']);
         });
     }
 

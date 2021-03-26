@@ -3,7 +3,8 @@
         <div class="card  d-block border hover-shadow-6 h-250 mb-6">
            <div class="row mb-0">
                <div class="col-md-12 star-right" >
-                   <star-rating :read-only="true" :increment="0.5" :rating="parseFloat(company.average_rating)" :star-size="14" :show-rating="false"></star-rating>
+                   <star-rating :read-only="true" :increment="0.5" :rating="parseFloat(company.avg_rating)" :star-size="14" :show-rating="false"></star-rating>
+                   <h6 class="ml-20 mt-0">{{parseFloat(company.avg_rating).toFixed(2)}}</h6>
                </div>
            </div>
             <div class=" pl-3 text-center pr-3">
@@ -44,7 +45,7 @@ export default {
                 rating
             }).then(response => {
                 const { company } = response.data
-                this.company.average_rating = company.average_rating
+                this.company.avg_rating = company.avg_rating
                 this.company.is_rated = company.is_rated
                 console.log(response.data)
                 }).catch(err => {

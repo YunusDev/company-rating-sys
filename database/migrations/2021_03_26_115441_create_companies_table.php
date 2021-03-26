@@ -19,6 +19,7 @@ class CreateCompaniesTable extends Migration
             $table->string('email')->unique();
             $table->string('phone');
             $table->string('website');
+            $table->decimal('avg_rating')->default(0)->nullable();
             $table->timestamps();
         });
     }

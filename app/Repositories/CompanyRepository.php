@@ -6,6 +6,7 @@ namespace App\Repositories;
 
 use App\Contracts\CompanyContract;
 use App\Models\Company;
+use Illuminate\Support\Facades\Log;
 
 class CompanyRepository extends BaseRepository implements CompanyContract
 {
@@ -16,16 +17,18 @@ class CompanyRepository extends BaseRepository implements CompanyContract
 
     }
 
-    public function getCompanies(int $numPagination = 9)
+    public function getCompanies(int $numPagination = 9, string $orderBy = 'created_at', string $sortBy = 'desc')
     {
-        return $this->model->latest()->paginate($numPagination);
+        return $this->all($numPagination, $orderBy, $sortBy);
 
     }
 
     public function rateCompany(Company $company, int $rating)
     {
         $company->ratings()->attach(auth()->id(), ['rating' => $rating]);
-        return $company->fresh();
+        $company->fresh();
+        $company->update(['avg_rating' => $company->averageRating()]);
+        return $company;
     }
 
 

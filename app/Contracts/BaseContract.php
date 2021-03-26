@@ -20,12 +20,13 @@ interface BaseContract
 
     /**
      * Return all model rows
-     * @param array $columns
+     * @param int $numPaginated
      * @param string $orderBy
      * @param string $sortBy
+     * @param array $relationship
      * @return mixed
      */
-    public function all($columns = array('*'), string $orderBy = 'id', string $sortBy = 'desc');
+    public function all(int $numPaginated = 9, string $orderBy = 'created_at', string $sortBy = 'desc', array $relationship = []);
 
     /**
      * Return all model rows

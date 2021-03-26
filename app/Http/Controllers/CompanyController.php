@@ -7,6 +7,8 @@ use App\Http\Requests\CompanyRateRequest;
 use App\Models\Company;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
+use function Psy\debug;
 
 class CompanyController extends Controller
 {
@@ -22,14 +24,17 @@ class CompanyController extends Controller
     public function getCompanies(Request $request){
 
 
-        if ($request->get('page')){
+        if ($request->get('orderBy') && $request->get('sortBy')){
 
-            $page = 1;
+            $companies = $this->companyRepository->getCompanies(9,
+                $request->get('orderBy'), $request->get('sortBy')
+            );
+
+        }else{
+
+            $companies = $this->companyRepository->getCompanies(9);
 
         }
-
-        $companies = $this->companyRepository->getCompanies(9);
-
         return response()->json($companies);
 
     }

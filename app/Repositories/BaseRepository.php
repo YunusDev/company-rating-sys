@@ -19,6 +19,18 @@ class BaseRepository implements BaseContract
     }
 
     /**
+     * @param string $orderBy
+     * @param string $sortBy
+     * @param array $relationship
+     * @param int $numPaginated
+     * @return mixed
+     */
+    public function all(int $numPaginated = 9, string $orderBy = 'created_at', string $sortBy = 'desc', array $relationship = [])
+    {
+        return $this->model->orderBy($orderBy, $sortBy)->with($relationship)->paginate($numPaginated);
+    }
+
+    /**
      * @param array $attributes
      * @return mixed
      */
@@ -35,18 +47,6 @@ class BaseRepository implements BaseContract
     public function update(array $attributes, string $id) : bool
     {
         return $this->find($id)->update($attributes);
-    }
-
-    /**
-     * @param array $columns
-     * @param string $orderBy
-     * @param string $sortBy
-     * @param array $relationship
-     * @return mixed
-     */
-    public function all($columns = array('*'), string $orderBy = 'created_at', string $sortBy = 'desc', array $relationship = [])
-    {
-        return $this->model->orderBy($orderBy, $sortBy)->with($relationship)->get($columns);
     }
 
     /**

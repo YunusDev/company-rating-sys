@@ -17,6 +17,7 @@ class Company extends Model
         'email',
         'phone',
         'website',
+        'avg_rating',
     ];
 
     public function ratings(){

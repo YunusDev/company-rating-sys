@@ -1904,6 +1904,27 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "Companies",
@@ -1913,7 +1934,11 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      companiesData: {}
+      companiesData: {},
+      query: {
+        orderBy: '',
+        sortBy: 'desc'
+      }
     };
   },
   created: function created() {
@@ -1927,7 +1952,13 @@ __webpack_require__.r(__webpack_exports__);
         page = 1;
       }
 
-      this.$http.get('/companies?page=' + page).then(function (response) {
+      var query = '';
+
+      if (this.query.orderBy) {
+        query = "&orderBy=".concat(this.query.orderBy, "&sortBy=").concat(this.query.sortBy);
+      }
+
+      this.$http.get('/companies?page=' + page + query).then(function (response) {
         _this.companiesData = response.data;
       })["catch"](function (err) {
         console.log(err);
@@ -1974,6 +2005,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "Company",
@@ -1994,7 +2026,7 @@ __webpack_require__.r(__webpack_exports__);
         rating: rating
       }).then(function (response) {
         var company = response.data.company;
-        _this.company.average_rating = company.average_rating;
+        _this.company.avg_rating = company.avg_rating;
         _this.company.is_rated = company.is_rated;
         console.log(response.data);
       })["catch"](function (err) {
@@ -38183,6 +38215,122 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("section", { staticClass: "section bg-gray" }, [
     _c("div", { staticClass: "container-fluid" }, [
+      _c("div", { staticClass: "row gap-y col-md-11 justify-content-lg-end" }, [
+        _c(
+          "div",
+          {
+            staticClass: "col-md-2 form-group mr-12",
+            on: {
+              change: function($event) {
+                return _vm.getCompanies()
+              }
+            }
+          },
+          [
+            _c("label", [_vm._v("Order By:")]),
+            _vm._v(" "),
+            _c(
+              "select",
+              {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.query.orderBy,
+                    expression: "query.orderBy"
+                  }
+                ],
+                staticClass: "form-control",
+                on: {
+                  change: function($event) {
+                    var $$selectedVal = Array.prototype.filter
+                      .call($event.target.options, function(o) {
+                        return o.selected
+                      })
+                      .map(function(o) {
+                        var val = "_value" in o ? o._value : o.value
+                        return val
+                      })
+                    _vm.$set(
+                      _vm.query,
+                      "orderBy",
+                      $event.target.multiple ? $$selectedVal : $$selectedVal[0]
+                    )
+                  }
+                }
+              },
+              [
+                _c("option", { attrs: { value: "" } }, [
+                  _vm._v("-- Select --")
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "name" } }, [_vm._v("Name")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "avg_rating" } }, [
+                  _vm._v("Rating")
+                ])
+              ]
+            )
+          ]
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            staticClass: "col-md-2 form-group",
+            on: {
+              change: function($event) {
+                return _vm.getCompanies()
+              }
+            }
+          },
+          [
+            _c("label", [_vm._v("Order:")]),
+            _vm._v(" "),
+            _c(
+              "select",
+              {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.query.sortBy,
+                    expression: "query.sortBy"
+                  }
+                ],
+                staticClass: "form-control",
+                on: {
+                  change: function($event) {
+                    var $$selectedVal = Array.prototype.filter
+                      .call($event.target.options, function(o) {
+                        return o.selected
+                      })
+                      .map(function(o) {
+                        var val = "_value" in o ? o._value : o.value
+                        return val
+                      })
+                    _vm.$set(
+                      _vm.query,
+                      "sortBy",
+                      $event.target.multiple ? $$selectedVal : $$selectedVal[0]
+                    )
+                  }
+                }
+              },
+              [
+                _c("option", { attrs: { value: "desc" } }, [
+                  _vm._v("Descending")
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "asc" } }, [_vm._v("Ascending")])
+              ]
+            )
+          ]
+        )
+      ]),
+      _vm._v(" "),
+      _c("br"),
+      _vm._v(" "),
       _c(
         "div",
         { staticClass: "row col-md-10 gap-y mx-auto" },
@@ -38212,7 +38360,7 @@ var render = function() {
               },
               [
                 _c("i", { staticClass: "ti-arrow-left fs-9 mr-2" }),
-                _vm._v(" Newer\n                ")
+                _vm._v(" Prev\n                ")
               ]
             ),
             _vm._v(" "),
@@ -38232,7 +38380,7 @@ var render = function() {
                 }
               },
               [
-                _vm._v("\n                    Older "),
+                _vm._v("\n                    Next "),
                 _c("i", { staticClass: "ti-arrow-right fs-9 ml-2" })
               ]
             )
@@ -38280,11 +38428,15 @@ var render = function() {
                 attrs: {
                   "read-only": true,
                   increment: 0.5,
-                  rating: parseFloat(_vm.company.average_rating),
+                  rating: parseFloat(_vm.company.avg_rating),
                   "star-size": 14,
                   "show-rating": false
                 }
-              })
+              }),
+              _vm._v(" "),
+              _c("h6", { staticClass: "ml-20 mt-0" }, [
+                _vm._v(_vm._s(parseFloat(_vm.company.avg_rating).toFixed(2)))
+              ])
             ],
             1
           )

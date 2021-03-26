@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/companies', [App\Http\Controllers\HomeController::class, 'getCompanies']);
 
 Auth::routes();
 

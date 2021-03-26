@@ -11,7 +11,7 @@
     <title>Companies</title>
 
     <!-- Styles -->
-    <link href="{{asset('css/app.css')}}" rel="stylesheet">
+{{--    <link href="{{asset('css/app.css')}}" rel="stylesheet">--}}
 
     <link href="/assets/css/core.min.css" rel="stylesheet">
     <link href="/assets/css/thesaas.min.css" rel="stylesheet">
@@ -34,7 +34,6 @@
         <div class="container">
 
             <div class="topbar-left">
-                <button class="topbar-toggler">☰</button>
                 <a class="topbar-brand" href="{{url('/')}}"><h3>Companies</h3>
                 </a>
             </div>
@@ -71,7 +70,7 @@
 
     @yield('header')
 
-    <main class="main-content main">
+    <main class="">
         @yield('content')
     </main>
 

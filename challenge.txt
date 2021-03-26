@@ -1,0 +1,37 @@
+The application we are building is a simple listing of companies and ratings (1 – 5) which can be seen by guest users. Logged in users are able to rate the companies, but only once, and admin users are able to add, edit or delete companies. However, an admin should only be able to delete a company which doesn’t have any ratings for it. Finally, the application should expose a public API endpoint which provides access to all companies and their rating.
+
+Tech Stack
+
+Laravel Backend
+Vue Frontend
+Database of your choice
+Requirements
+
+The system uses authentication.
+Users can either be regular or admin.
+Guest users should be able to sort the list of companies by company name or average rating.
+The system should expect thousands of possible companies.
+A logged in user can rate a company between 1 and 5 once.
+A company’s rating is an average of all the ratings.
+An admin user can create a new company with a company name, website, phone number, and an email address.
+An admin can update an existing company.
+An admin can delete an existing company as long as it doesn’t have any ratings.
+An endpoint exists to get all companies with their average rating and total votes.
+To make things simpler:
+
+Use Laravel’s default authentication scaffolding.
+Use an isAdmin property on the user to define if they are an admin or not.
+These are some aspects we pay particular attention to:
+
+MUST write testable code and demonstrate unit testing it
+MUST seed the database
+SHOULD expect the rating range to change in the future
+SHOULD expect that other entities will be introduced which need to be rated
+SHOULD assume reviewers will be using Mac/Windows systems
+The following earn you bonus points:
+
+Your answers during code review
+Following the industry standard style guide
+A git history with clear, concise commit messages
+Pagination
+Maintainability

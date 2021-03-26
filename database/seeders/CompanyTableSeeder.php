@@ -2,17 +2,19 @@
 
 namespace Database\Seeders;
 
+use App\Models\Company;
 use Illuminate\Database\Seeder;
 
-class DatabaseSeeder extends Seeder
+class CompanyTableSeeder extends Seeder
 {
     /**
-     * Seed the application's database.
+     * Run the database seeds.
      *
      * @return void
      */
     public function run()
     {
-        $this->call(CompanyTableSeeder::class);
+        //
+        Company::factory(1000)->create();
     }
 }

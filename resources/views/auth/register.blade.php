@@ -11,7 +11,6 @@
     <div class="card card-shadowed p-50 w-400 mb-0" style="max-width: 100%">
         <h5 class="text-uppercase text-center">Register</h5>
         <br>
-
         <form method="POST" action="{{ route('register') }}" class="mt-5 form-type-material">
             @csrf
 

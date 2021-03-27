@@ -7,21 +7,29 @@ use App\Http\Requests\CompanyRateRequest;
 use App\Models\Company;
 use App\Transformers\CompanyCollection;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Log;
-use function Psy\debug;
 
 class CompanyController extends Controller
 {
     //
 
+    /**
+     * @var CompanyContract
+     */
     private $companyRepository;
 
+    /**
+     * CompanyController constructor.
+     * @param CompanyContract $companyRepository
+     */
     public function __construct(CompanyContract $companyRepository)
     {
         $this->companyRepository = $companyRepository;
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function getCompanies(Request $request){
 
 
@@ -40,6 +48,11 @@ class CompanyController extends Controller
 
     }
 
+    /**
+     * @param CompanyRateRequest $request
+     * @param Company $company
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function rateCompany(CompanyRateRequest $request, Company $company){
 
         return response()->json([
@@ -50,7 +63,9 @@ class CompanyController extends Controller
 
     }
 
-
+    /**
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function getApiCompanies(){
 
         $companies = $this->companyRepository->getCompanies(10);
@@ -62,8 +77,6 @@ class CompanyController extends Controller
             'data' => new CompanyCollection($companies)
 
         ]);
-
-
 
     }
 }

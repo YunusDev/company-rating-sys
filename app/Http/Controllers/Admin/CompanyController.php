@@ -13,11 +13,18 @@ class CompanyController extends Controller
     //
     private $companyRepository;
 
+    /**
+     * CompanyController constructor.
+     * @param CompanyContract $companyRepository
+     */
     public function __construct(CompanyContract $companyRepository)
     {
         $this->companyRepository = $companyRepository;
     }
 
+    /**
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
     public function index(){
 
         return view('admin.company.index');
@@ -25,6 +32,11 @@ class CompanyController extends Controller
     }
 
 
+    /**
+     * @param StoreCompanyRequest $request
+     * @return mixed
+     * @throws \Throwable
+     */
     public function store(StoreCompanyRequest $request){
 
         try {
@@ -40,6 +52,12 @@ class CompanyController extends Controller
 
     }
 
+    /**
+     * @param StoreCompanyRequest $request
+     * @param Company $company
+     * @return Company|null
+     * @throws \Throwable
+     */
     public function update(StoreCompanyRequest $request, Company $company){
 
         try {
@@ -57,6 +75,12 @@ class CompanyController extends Controller
 
     }
 
+    /**
+     * @param Request $request
+     * @param Company $company
+     * @return \Illuminate\Http\JsonResponse|mixed
+     * @throws \Throwable
+     */
     public function destroy(Request $request, Company $company){
 
         try {

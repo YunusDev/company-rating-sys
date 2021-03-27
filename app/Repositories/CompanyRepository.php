@@ -31,5 +31,20 @@ class CompanyRepository extends BaseRepository implements CompanyContract
         return $company;
     }
 
+    public function storeCompany(array $params)
+    {
+        return $this->create($params);
+    }
+
+    public function updateCompany(array $params, string $id)
+    {
+        return $this->update($params, $id);
+    }
+
+    public function deleteCompany(string $id)
+    {
+        return $this->delete($id);
+    }
+
 
 }

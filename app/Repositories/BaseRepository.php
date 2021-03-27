@@ -40,6 +40,15 @@ class BaseRepository implements BaseContract
     }
 
     /**
+     * @param int $id
+     * @return mixed
+     */
+    public function find(string $id)
+    {
+        return $this->model->find($id);
+    }
+
+    /**
      * @param array $attributes
      * @param int $id
      * @return bool

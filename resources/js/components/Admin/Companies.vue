@@ -5,7 +5,7 @@
             <div class="card-header">
                 <div class="mb-4" style="position: absolute; right: 0; margin-bottom: 50px">
                     <button style="padding: 10px" @click="createCompany()" class="  btn btn-primary">
-                        <i class="fas fa-plus" style="padding-right: 10px"></i>Add New Category
+                        <i class="fas fa-plus" style="padding-right: 10px"></i>Add New Company
                     </button>
                 </div>
             </div>
@@ -28,24 +28,24 @@
                             <td>{{company.email}}</td>
                             <td>{{company.phone}}</td>
                             <td>{{company.website}}</td>
-                            <td>{{parseFloat(company.avg_rating).toFixed(2)}}</td>
+                            <td>{{company.avg_rating ? parseFloat(company.avg_rating).toFixed(2) : 0.00}}</td>
                             <td>{{company.formatted_date}}</td>
-                            <td><a href="#" class="btn btn-secondary">Detail</a></td>
-                            <td><a href="#" class="btn btn-secondary">Detail</a></td>
+                            <td><a class="cursor" @click="editCompany(company)"><i class="text-center fas text-primary fa-edit"></i></a></td>
+                            <td><a class="cursor" @click="deleteCompany(company.id, key)"><span class="text-center text-danger fas fa-trash" ></span></a></td>
                         </tr>
                         </tbody></table>
                 </div>
             </div>
             <div class="card-footer text-right">
                 <nav class="d-inline-block">
-                    <ul style="cursor: pointer" class="pagination mb-0">
-                        <li class="page-item " :class="{'disabled': companiesData.current_page === 1}">
+                    <ul class="pagination mb-0">
+                        <li class="page-item  cursor" :class="{'disabled': companiesData.current_page === 1}">
                             <a class="page-link"
                                @click="getCompanies(companiesData.current_page - 1)" tabindex="-1">
                                 <i class="fas fa-chevron-left mr-3"></i>
                             Previous</a>
                         </li>
-                        <li style="cursor: pointer" class="page-item cursor" :class="{'disabled': companiesData.current_page === companiesData.last_page}">
+                        <li style="" class="page-item cursor" :class="{'disabled': companiesData.current_page === companiesData.last_page}">
                             <a class="page-link"
                                @click="getCompanies(companiesData.current_page + 1)" >
                                 Next <i class="fas fa-chevron-right ml-3"></i>
@@ -55,13 +55,19 @@
                 </nav>
             </div>
         </div>
+        <store-company></store-company>
     </div>
 </div>
 </template>
 
 <script>
+import Swal from 'sweetalert'
+import StoreCompany from "./StoreCompany";
+
 export default {
     name: "Companies",
+
+    components: {StoreCompany},
 
     data(){
 
@@ -75,15 +81,38 @@ export default {
     mounted(){
 
         this.getCompanies()
+
+        this.$on('add_company', (company) => {
+
+            this.companiesData.data.unshift(company);
+            this.notifSuceess('Company Created Successfully!!!')
+
+        });
+
+
+        this.$on('update_company', (company) => {
+
+            const index = this.companiesData.data.findIndex(item => item.id === company.id);
+            this.companiesData.data.splice(index, 1, company);
+
+            this.notifSuceess('Company Updated Successfully!!')
+        })
     },
 
     methods: {
 
         createCompany(){
 
-
+            this.$emit('create_company');
 
         },
+
+        editCompany(company){
+
+            this.$emit('edit_company', company)
+
+        },
+
 
         getCompanies(page) {
             if (typeof page === 'undefined') {
@@ -95,6 +124,27 @@ export default {
                 }).catch(err => {
                 console.log(err)
             });
+        },
+
+        deleteCompany(id, key){
+
+            Swal('Are you sure want to delete this company', {
+                buttons: ['Oh no!', true]
+            }).then(value => {
+                if (value) {
+                    this.$http.delete(`/admin/companies/${id}`).then(res => {
+
+                        this.companiesData.data.splice(key, 1);
+                        this.notifSuceess('Company Deleted Successfully');
+
+                    }).catch(err => {
+
+                        this.notifError( err.message || 'An error occurred')
+                    })
+
+                }
+            })
+
         }
 
     }
@@ -102,5 +152,7 @@ export default {
 </script>
 
 <style scoped>
-
+.fas{
+    font-size: 20px;
+}
 </style>

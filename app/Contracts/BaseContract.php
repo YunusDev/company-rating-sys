@@ -11,6 +11,12 @@ interface BaseContract
     public function create(array $attributes);
 
     /**
+     * Find one by ID
+     * @param int $id
+     * @return mixed
+     */
+    public function find(string $id);
+    /**
      * Update a model instance
      * @param array $attributes
      * @param int $id

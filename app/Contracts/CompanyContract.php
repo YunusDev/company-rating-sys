@@ -9,4 +9,10 @@ interface CompanyContract{
 
     public function rateCompany(Company $company, int $rating);
 
+    public function storeCompany(array $params);
+
+    public function updateCompany(array $params, string $id);
+//
+    public function deleteCompany(string $id);
+
 }

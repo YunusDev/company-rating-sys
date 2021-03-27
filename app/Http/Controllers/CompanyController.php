@@ -35,13 +35,13 @@ class CompanyController extends Controller
 
         if ($request->get('orderBy') && $request->get('sortBy')){
 
-            $companies = $this->companyRepository->getCompanies(9,
+            $companies = $this->companyRepository->getCompanies(6,
                 $request->get('orderBy'), $request->get('sortBy')
             );
 
         }else{
 
-            $companies = $this->companyRepository->getCompanies(9);
+            $companies = $this->companyRepository->getCompanies(6);
 
         }
 

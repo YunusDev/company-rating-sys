@@ -1,6 +1,6 @@
 **To get the project up and running, Pls Do the following After Cloning:**
 
-(PS)I used PHP/Laravel Framework and XAMPP Web server.
+(PS) I used PHP/Laravel Framework, VueJS along with MySQL Database.
 
 - RUN `composer install`
 

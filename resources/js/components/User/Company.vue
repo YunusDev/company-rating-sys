@@ -1,5 +1,5 @@
 <template>
-    <div class="col-md-6  col-lg-4">
+    <div class="col-md-6 col-sm-12 col-xs-12 col-lg-4">
         <div class="card  d-block border hover-shadow-6 mb-6 h-290" >
            <div class="row mb-0">
                <div class="col-md-12 star-right" >
@@ -8,9 +8,9 @@
                </div>
            </div>
             <div class=" pl-3 text-center pr-3">
-                <p class="small-5 text-lighter text-uppercase ls-2 fw-300">{{ company.name }}</p>
-                <p class="medium m-0 text-dark">{{ company.phone }}</p>
-                <p class="medium m-0 text-dark">{{ company.email }}</p>
+                <p class="small-5 text-dark text-uppercase ls-2 fw-400">{{ company.name }}</p>
+                <p class="medium m-0 text-light">{{ company.phone }}</p>
+                <p class="medium m-0 text-light">{{ company.email }}</p>
                 <a class="small ls-1" target="_blank" :href="company.website">{{ company.website }} <span class="pl-1">⟶</span></a>
                 <br>
                 <div class="star" v-if="!company.is_rated" >

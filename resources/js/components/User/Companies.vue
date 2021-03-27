@@ -13,7 +13,7 @@
                     </select>
                 </div>
                 <div @change="getCompanies()" class="col-md-2 form-group">
-                    <label>Order:</label>
+                    <label>Sort By:</label>
                     <select class="form-control" v-model="query.sortBy">
                         <option value="desc">Descending</option>
                         <option value="asc">Ascending</option>
@@ -21,8 +21,7 @@
                 </div>
             </div>
             <br>
-            <div class="row col-md-10 gap-y mx-auto" style="">
-
+            <div class="row col-md-10 col-sm-12  gap-y mx-auto" style="">
                 <company :is_auth="is_auth" v-for="company in companiesData.data" :key="company.id" :company="company"  ></company>
                 <br>
                 <br>

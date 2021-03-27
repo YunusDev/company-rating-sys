@@ -19,7 +19,7 @@ or duplicate the `.env.example` file and name the duplicated one `.env`
 
 TO RUN The Tests
 
-- Go to `.env.testing` located on the root directory and provide the correct absolute path for the 
+- Navigate to `.env.testing` located on the root directory and provide the correct absolute path for the 
 `test.sqlite` file in the `database` folder also in the root directory
     - Correct PATH should be provided in the `DB_DATABASE` field
 

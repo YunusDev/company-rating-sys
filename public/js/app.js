@@ -2230,7 +2230,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "Companies",
@@ -40822,7 +40821,7 @@ var render = function() {
             }
           },
           [
-            _c("label", [_vm._v("Order:")]),
+            _c("label", [_vm._v("Sort By:")]),
             _vm._v(" "),
             _c(
               "select",
@@ -40870,7 +40869,7 @@ var render = function() {
       _vm._v(" "),
       _c(
         "div",
-        { staticClass: "row col-md-10 gap-y mx-auto" },
+        { staticClass: "row col-md-10 col-sm-12  gap-y mx-auto" },
         [
           _vm._l(_vm.companiesData.data, function(company) {
             return _c("company", {
@@ -40951,7 +40950,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "col-md-6  col-lg-4" }, [
+  return _c("div", { staticClass: "col-md-6 col-sm-12 col-xs-12 col-lg-4" }, [
     _c(
       "div",
       { staticClass: "card  d-block border hover-shadow-6 mb-6 h-290" },
@@ -40982,15 +40981,15 @@ var render = function() {
         _c("div", { staticClass: " pl-3 text-center pr-3" }, [
           _c(
             "p",
-            { staticClass: "small-5 text-lighter text-uppercase ls-2 fw-300" },
+            { staticClass: "small-5 text-dark text-uppercase ls-2 fw-400" },
             [_vm._v(_vm._s(_vm.company.name))]
           ),
           _vm._v(" "),
-          _c("p", { staticClass: "medium m-0 text-dark" }, [
+          _c("p", { staticClass: "medium m-0 text-light" }, [
             _vm._v(_vm._s(_vm.company.phone))
           ]),
           _vm._v(" "),
-          _c("p", { staticClass: "medium m-0 text-dark" }, [
+          _c("p", { staticClass: "medium m-0 text-light" }, [
             _vm._v(_vm._s(_vm.company.email))
           ]),
           _vm._v(" "),

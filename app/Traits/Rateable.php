@@ -21,6 +21,11 @@ trait Rateable{
         return $this->ratings()->withPivot('rating')->average('rating');
     }
 
+    public  function totalVotes(){
+
+        return $this->ratings()->withPivot('rating')->sum('rating');
+    }
+
 
     public function getIsRatedAttribute(){
 

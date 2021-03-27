@@ -20,6 +20,8 @@ class CompanyResource extends JsonResource
             'email' => $this->email,
             'phone' => $this->phone,
             'website' => $this->website,
+            'avg_rating' => $this->averageRating(),
+            'total_votes' => $this->totalVotes(),
             'created_date' => $this->created_at
         ];
     }

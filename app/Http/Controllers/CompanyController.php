@@ -53,7 +53,7 @@ class CompanyController extends Controller
 
     public function getApiCompanies(){
 
-        $companies = $this->companyRepository->getCompanies(9);
+        $companies = $this->companyRepository->getCompanies(10);
 
         return response()->json([
 

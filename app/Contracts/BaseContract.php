@@ -12,14 +12,15 @@ interface BaseContract
 
     /**
      * Find one by ID
-     * @param int $id
+     * @param string $id
      * @return mixed
      */
     public function find(string $id);
+
     /**
      * Update a model instance
      * @param array $attributes
-     * @param int $id
+     * @param string $id
      * @return mixed
      */
     public function update(array $attributes, string $id);
@@ -36,16 +37,15 @@ interface BaseContract
 
     /**
      * Return all model rows
-     * @param array $columns
-     * @param string $orderBy
-     * @param string $sortBy
+     * @param array $data
+     * @param int $paginate
      * @return mixed
      */
     public function paginate(array $data, int $paginate);
 
     /**
      * Delete one by Id
-     * @param int $id
+     * @param string $id
      * @return mixed
      */
     public function delete(string $id);

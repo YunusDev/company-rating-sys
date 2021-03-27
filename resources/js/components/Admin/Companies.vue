@@ -30,8 +30,12 @@
                             <td>{{company.website}}</td>
                             <td>{{company.avg_rating ? parseFloat(company.avg_rating).toFixed(2) : 0.00}}</td>
                             <td>{{company.formatted_date}}</td>
-                            <td><a class="cursor" @click="editCompany(company)"><i class="text-center fas text-primary fa-edit"></i></a></td>
-                            <td><a class="cursor" @click="deleteCompany(company.id, key)"><span class="text-center text-danger fas fa-trash" ></span></a></td>
+                            <td ><a class="cursor" @click="editCompany(company)"><i class="text-center fas text-primary fa-edit"></i></a></td>
+                            <td><a :class="!company.has_rating ? 'cursor' : 'disabled'"
+                                   @click="deleteCompany(company.id, key)">
+                                <span class="text-center text-danger fas fa-trash" ></span>
+                                </a>
+                            </td>
                         </tr>
                         </tbody></table>
                 </div>
@@ -154,5 +158,12 @@ export default {
 <style scoped>
 .fas{
     font-size: 20px;
+}
+
+.disabled {
+    color: #aaa;
+    cursor: not-allowed;
+    opacity: 0.5;
+    text-decoration: none;
 }
 </style>

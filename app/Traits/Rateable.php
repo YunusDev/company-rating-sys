@@ -10,6 +10,12 @@ trait Rateable{
             ->wherePivot('user_id', auth()->id())->exists();
     }
 
+    public  function hasRating(){
+
+        return $this->ratings()->withPivot('rating')->exists();
+
+    }
+
     public  function averageRating(){
 
         return $this->ratings()->withPivot('rating')->average('rating');
@@ -19,6 +25,12 @@ trait Rateable{
     public function getIsRatedAttribute(){
 
         return $this->isRated();
+
+    }
+
+    public function getHasRatingAttribute(){
+
+        return $this->hasRating();
 
     }
 

@@ -40,7 +40,7 @@ class BaseRepository implements BaseContract
     }
 
     /**
-     * @param int $id
+     * @param string $id
      * @return mixed
      */
     public function find(string $id)
@@ -59,9 +59,8 @@ class BaseRepository implements BaseContract
     }
 
     /**
-     * @param array $columns
-     * @param string $orderBy
-     * @param string $sortBy
+     * @param array $data
+     * @param int $paginate
      * @return mixed
      */
     public function paginate(array $data, int $paginate)
@@ -70,7 +69,7 @@ class BaseRepository implements BaseContract
     }
 
     /**
-     * @param int $id
+     * @param string $id
      * @return bool
      */
     public function delete(string $id) : bool

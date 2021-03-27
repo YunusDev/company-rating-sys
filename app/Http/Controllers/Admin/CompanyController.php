@@ -57,11 +57,20 @@ class CompanyController extends Controller
 
     }
 
-    public function destroy(Request $request, $id){
+    public function destroy(Request $request, Company $company){
 
         try {
 
-            return $this->companyRepository->deleteCompany($id);
+            if ($company->hasRating()){
+
+                return response()->json([
+
+                    'message' => 'Company cant be deleted'
+                ], 400);
+
+            }
+
+            return $this->companyRepository->deleteCompany($company->id);
 
         }catch (\Throwable $exception){
 

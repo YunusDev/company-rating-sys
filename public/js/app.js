@@ -1910,6 +1910,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -7011,7 +7015,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.fas[data-v-d6256c40]{\n    font-size: 20px;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.fas[data-v-d6256c40]{\n    font-size: 20px;\n}\n.disabled[data-v-d6256c40] {\n    color: #aaa;\n    cursor: not-allowed;\n    opacity: 0.5;\n    text-decoration: none;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -40311,7 +40315,9 @@ var render = function() {
                           _c(
                             "a",
                             {
-                              staticClass: "cursor",
+                              class: !company.has_rating
+                                ? "cursor"
+                                : "disabled",
                               on: {
                                 click: function($event) {
                                   return _vm.deleteCompany(company.id, key)

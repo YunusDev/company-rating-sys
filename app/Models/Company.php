@@ -9,7 +9,7 @@ class Company extends Model
 {
     use HasFactory, Rateable;
 
-    public $appends = ['is_rated', 'formatted_date'];
+    public $appends = ['is_rated', 'formatted_date', 'has_rating'];
 
     protected $fillable = [
         'name',

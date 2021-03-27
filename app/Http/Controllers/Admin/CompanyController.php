@@ -22,9 +22,7 @@ class CompanyController extends Controller
         $this->companyRepository = $companyRepository;
     }
 
-    /**
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
-     */
+
     public function index(){
 
         return view('admin.company.index');
@@ -94,7 +92,12 @@ class CompanyController extends Controller
 
             }
 
-            return $this->companyRepository->deleteCompany($company->id);
+            $this->companyRepository->deleteCompany($company->id);
+            return response()->json([
+
+                'message' => 'Company deleted successfully'
+
+            ]);
 
         }catch (\Throwable $exception){
 

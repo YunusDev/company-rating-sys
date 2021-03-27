@@ -44,6 +44,7 @@ class CompanyController extends Controller
             $companies = $this->companyRepository->getCompanies(9);
 
         }
+
         return response()->json($companies);
 
     }

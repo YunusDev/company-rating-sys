@@ -15,7 +15,7 @@ class UserTableSeeder extends Seeder
     public function run()
     {
         //
-        $admins = [
+        $users = [
             [
                 'name' => 'John Doe',
                 'email' => 'john@gmail.com',
@@ -37,8 +37,8 @@ class UserTableSeeder extends Seeder
             ]
         ];
 
-        foreach ($admins as $admin) {
-            \App\Models\User::updateOrCreate($admin);
+        foreach ($users as $user) {
+            \App\Models\User::updateOrCreate($user);
         }
     }
 }

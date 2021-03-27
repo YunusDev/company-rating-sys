@@ -33,6 +33,6 @@ Route::group(['middleware'=>'auth'], function() {
 
 Route::group(['middleware'=>'admin', 'prefix' => 'admin'], function() {
 
-    Route::resource('/companies', App\Http\Controllers\Admin\CompanyController::class);
+    Route::apiResource('/companies', App\Http\Controllers\Admin\CompanyController::class);
 
 });

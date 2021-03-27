@@ -1961,8 +1961,7 @@ __webpack_require__.r(__webpack_exports__);
 
       this.$http.get('/companies?page=' + page).then(function (response) {
         _this2.companiesData = response.data;
-      })["catch"](function (err) {
-        console.log(err);
+      })["catch"](function (err) {// console.log(err)
       });
     },
     deleteCompany: function deleteCompany(id, key) {
@@ -2267,8 +2266,7 @@ __webpack_require__.r(__webpack_exports__);
 
       this.$http.get('/companies?page=' + page + query).then(function (response) {
         _this.companiesData = response.data;
-      })["catch"](function (err) {
-        console.log(err);
+      })["catch"](function (err) {// console.log(err)
       });
     }
   }
@@ -2336,9 +2334,7 @@ __webpack_require__.r(__webpack_exports__);
         var company = response.data.company;
         _this.company.avg_rating = company.avg_rating;
         _this.company.is_rated = company.is_rated;
-        console.log(response.data);
-      })["catch"](function (err) {
-        console.log(err);
+      })["catch"](function (err) {// console.log(err)
       });
     }
   }

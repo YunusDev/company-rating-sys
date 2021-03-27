@@ -126,7 +126,7 @@ export default {
                 .then(response => {
                     this.companiesData = response.data;
                 }).catch(err => {
-                console.log(err)
+                // console.log(err)
             });
         },
 

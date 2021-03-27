@@ -6,7 +6,6 @@ namespace App\Repositories;
 
 use App\Contracts\CompanyContract;
 use App\Models\Company;
-use Illuminate\Support\Facades\Log;
 
 class CompanyRepository extends BaseRepository implements CompanyContract
 {

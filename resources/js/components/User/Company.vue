@@ -48,9 +48,8 @@ export default {
                 const { company } = response.data
                 this.company.avg_rating = company.avg_rating
                 this.company.is_rated = company.is_rated
-                console.log(response.data)
                 }).catch(err => {
-                console.log(err)
+                // console.log(err)
             });
         }
     }

@@ -9,7 +9,7 @@ class Company extends Model
 {
     use HasFactory, Rateable;
 
-    public $appends = ['is_rated'];
+    public $appends = ['is_rated', 'formatted_date'];
 
     protected $fillable = [
         'name',
@@ -25,5 +25,10 @@ class Company extends Model
 
     }
 
+    public function getFormattedDateAttribute(){
+
+        return $this->created_at->format('F dS, Y');
+
+    }
 
 }

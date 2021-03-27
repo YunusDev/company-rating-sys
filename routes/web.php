@@ -23,11 +23,16 @@ Route::get('/companies',
     [App\Http\Controllers\CompanyController::class, 'getCompanies']
 );
 
-Route::get('/rate',
-    [App\Http\Controllers\CompanyController::class, 'rateCompany']
-);
+Route::group(['middleware'=>'auth'], function() {
 
-Route::post('/company/{company}/rate',
-    [App\Http\Controllers\CompanyController::class, 'rateCompany']
-);
+    Route::post('/company/{company}/rate',
+        [App\Http\Controllers\CompanyController::class, 'rateCompany']
+    );
 
+});
+
+Route::group(['middleware'=>'auth', 'prefix' => 'admin'], function() {
+
+    Route::resource('/companies', App\Http\Controllers\Admin\CompanyController::class);
+
+});

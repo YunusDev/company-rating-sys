@@ -31,7 +31,7 @@ Route::group(['middleware'=>'auth'], function() {
 
 });
 
-Route::group(['middleware'=>'auth', 'prefix' => 'admin'], function() {
+Route::group(['middleware'=>'admin', 'prefix' => 'admin'], function() {
 
     Route::resource('/companies', App\Http\Controllers\Admin\CompanyController::class);
 

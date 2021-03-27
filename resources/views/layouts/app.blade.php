@@ -5,14 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="keywords" content="">
-    <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>Companies</title>
-
-    <!-- Styles -->
-{{--    <link href="{{asset('css/app.css')}}" rel="stylesheet">--}}
-
     <link href="/assets/css/core.min.css" rel="stylesheet">
     <link href="/assets/css/thesaas.min.css" rel="stylesheet">
     <link href="{{asset('assets/css/style.css')}}" rel="stylesheet">
@@ -42,7 +37,7 @@
             <div class="topbar-right">
                 @auth
                     <ul class="topbar-nav nav">
-                        <li class="nav-item"><a class="nav-link" href="#">{{auth()->user()->name}}</a></li>
+                        <li class="nav-item"><a class="nav-link hidden-sm-down" href="#">{{auth()->user()->name}}</a></li>
                     </ul>
                 @endauth
 
@@ -52,8 +47,12 @@
                         <a class="btn btn-sm btn-outline btn-white hidden-sm-down" href="{{url('/register')}}">Register</a>
                     </div>
                 @else
-                    <div class="d-inline-flex ml-30">
-                        <a class="btn btn-sm btn-white mr-4" href="{{ route('logout') }}"
+
+                    @if(auth()->user()->isAdmin)
+                        <a  class="ml-10 btn btn-sm btn-warning hidden-sm-down" href="{{url('/admin/companies')}}">Admin</a>
+                    @endif
+                    <div class="d-inline-flex">
+                        <a class="btn btn-sm btn-white" href="{{ route('logout') }}"
                            onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                             {{ __('Logout') }}

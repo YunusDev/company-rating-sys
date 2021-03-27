@@ -40429,7 +40429,7 @@ var staticRenderFns = [
       _vm._v(" "),
       _c("th", [_vm._v("Website")]),
       _vm._v(" "),
-      _c("th", [_vm._v("Rating")]),
+      _c("th", [_vm._v("Avg Rating")]),
       _vm._v(" "),
       _c("th", [_vm._v("Created At")]),
       _vm._v(" "),

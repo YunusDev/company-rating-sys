@@ -18,7 +18,7 @@
                             <th>Email</th>
                             <th>Phone</th>
                             <th>Website</th>
-                            <th>Rating</th>
+                            <th>Avg Rating</th>
                             <th>Created At</th>
                             <th colspan="2">Action</th>
                         </tr>
